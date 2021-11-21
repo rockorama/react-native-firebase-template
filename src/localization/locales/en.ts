@@ -18,7 +18,7 @@ export default {
   fieldPhotoFromCamera: 'From camera',
   fieldPhotoFromLibrary: 'From media library',
   fieldRepeatPassword: 'Repeat Password',
-  fieldValidationEmail: 'Invald email',
+  fieldValidationEmail: 'Invalid email',
   fieldValidationPassword: 'Passwords must match',
   fieldValidationRequired: 'Required field',
   // Forgot Password Screen
