@@ -56,3 +56,5 @@ export default function ForgotPasswordScreen() {
     </Form>
   )
 }
+
+export const StackOptions = { headerTitle: 'Forgot Password' }

@@ -38,3 +38,5 @@ export default function WelcomeScreen(props: Props) {
     </ScrollView>
   )
 }
+
+export const StackOptions = { header: () => null }

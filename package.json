@@ -7,6 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "format": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
+    "routes": "node ./scripts/generateRoutes.js && npm run format",
     "eject": "expo eject"
   },
   "eslintConfig": {

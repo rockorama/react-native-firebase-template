@@ -54,3 +54,5 @@ export default function EmailVerificationScreen() {
     </ScrollView>
   )
 }
+
+export const StackOptions = { headerTitle: 'Verify your email' }

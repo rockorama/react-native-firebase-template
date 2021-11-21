@@ -3,9 +3,9 @@ import React from 'react'
 import { ActivityIndicator, useTheme } from 'react-native-paper'
 
 import { useAuth } from '../utils/contexts/Auth'
-import AppStack from './AppStack'
-import AuthStack from './AuthStack'
-import VerificationStack from './VerificationStack'
+import AppStack from './stacks/App'
+import AuthStack from './stacks/Auth'
+import VerificationStack from './stacks/Verification'
 
 export default function NavigationContainer() {
   const { user, ready } = useAuth()

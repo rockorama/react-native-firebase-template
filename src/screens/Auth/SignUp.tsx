@@ -60,3 +60,5 @@ export default function SignUpScreen() {
     </Form>
   )
 }
+
+export const StackOptions = { headerTitle: 'Sign Up' }

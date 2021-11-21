@@ -1,13 +1,14 @@
 import React from 'react'
-import { Button, Title } from 'react-native-paper'
+import { Title } from 'react-native-paper'
 
-import { signOut } from '../../firebase/authentication'
+import Box from '../../components/layout/Box'
 
 export default function HomeScreen() {
   return (
-    <>
-      <Title>Home</Title>
-      <Button onPress={signOut}>Sign out</Button>
-    </>
+    <Box center flex1>
+      <Title>Welcome to your app!</Title>
+    </Box>
   )
 }
+
+export const StackOptions = {}
