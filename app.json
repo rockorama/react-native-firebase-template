@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-firebase-scafold",
-    "slug": "react-native-firebase-scafold",
+    "name": "RN Firebase Template",
+    "slug": "react-native-firebase-template",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
@@ -26,6 +26,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to set your profile picture."
+        }
+      ]
+    ]
   }
 }

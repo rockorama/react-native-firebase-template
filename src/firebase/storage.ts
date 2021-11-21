@@ -16,5 +16,5 @@ export const uploadUserFile = async (
 ): Promise<string> => {
   const user = getAuthenticatedUser()
   const path = `${user.uid}/${folder}/${file.name}`
-  return await uploadFile(file, path)
+  return uploadFile(file, path)
 }
