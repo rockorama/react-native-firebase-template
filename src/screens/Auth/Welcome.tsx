@@ -13,14 +13,23 @@ export default function WelcomeScreen(props: Props) {
       flex1
       renderBottom={() => {
         return (
-          <Box padding={1}>
-            <Button onPress={() => props.navigation.navigate('Login')}>
-              Login
-            </Button>
-            <Button onPress={() => props.navigation.navigate('SignUp')}>
-              Sign up
-            </Button>
-          </Box>
+          <>
+            <Box padding={1}>
+              <Button
+                mode="contained"
+                color="white"
+                onPress={() => props.navigation.navigate('Login')}>
+                Login
+              </Button>
+            </Box>
+            <Box paddingX={1} paddingBottom={2}>
+              <Button
+                mode="contained"
+                onPress={() => props.navigation.navigate('SignUp')}>
+                Sign up
+              </Button>
+            </Box>
+          </>
         )
       }}>
       <Box flex1 center padding={5}>

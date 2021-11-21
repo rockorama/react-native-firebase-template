@@ -1,13 +1,26 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
-import { auth, UserType } from '../../firebase/authentication'
+import {
+  auth,
+  getAuthenticatedUser,
+  UserType,
+} from '../../firebase/authentication'
 
 export type AuthContextType = {
   ready?: boolean
   user?: UserType | null
+  refreshUser: () => Promise<void>
 }
 
-const AuthContext = createContext<AuthContextType>({})
+const AuthContext = createContext<AuthContextType>({
+  refreshUser: async () => {},
+})
 
 export function useAuth() {
   return useContext(AuthContext)
@@ -29,8 +42,16 @@ export default function AuthProvider({ children }: { children: Children }) {
     })
   }, [])
 
+  const refreshUser = useCallback(async () => {
+    if (user) {
+      const currentUser = getAuthenticatedUser()
+      await currentUser.reload()
+      setUser({ ...currentUser })
+    }
+  }, [user])
+
   return (
-    <AuthContext.Provider value={{ user, ready }}>
+    <AuthContext.Provider value={{ user, ready, refreshUser }}>
       {children}
     </AuthContext.Provider>
   )

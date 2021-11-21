@@ -3,6 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import NavigationContainer from './navigation/NavigationContainer'
 import AuthProvider from './utils/contexts/Auth'
+import FeedbackProvider from './utils/contexts/Feedback'
 import Layout from './utils/contexts/Layout'
 
 export default function Root() {
@@ -10,7 +11,9 @@ export default function Root() {
     <SafeAreaProvider>
       <AuthProvider>
         <Layout>
-          <NavigationContainer />
+          <FeedbackProvider>
+            <NavigationContainer />
+          </FeedbackProvider>
         </Layout>
       </AuthProvider>
     </SafeAreaProvider>

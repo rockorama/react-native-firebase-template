@@ -6,7 +6,7 @@ import { Provider as PaperProvider } from 'react-native-paper'
 import Background from '../../components/layout/Background'
 import themes from '../../config/theme'
 
-export default function Layout(props: { children: Children }) {
+export default function LayoutProvider(props: { children: Children }) {
   const scheme = useColorScheme()
 
   return (

@@ -6,6 +6,7 @@ import TextInput from '../../components/form/TextInput'
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import { login } from '../../firebase/authentication'
+import { useFeedback } from '../../utils/contexts/Feedback'
 
 type LoginForm = {
   email: string
@@ -13,11 +14,14 @@ type LoginForm = {
 }
 
 export default function LoginScreen() {
+  const giveFeedback = useFeedback()
+
   const onSubmit = async (payload: FormSubmitPayload<LoginForm>) => {
     if (payload.valid) {
       try {
-        await login(payload.values.email, payload.values.password)
+        await login(payload.values)
       } catch (e: any) {
+        giveFeedback(e.message.replace('Firebase:', ''), true)
         payload.onFinish()
       }
     }
@@ -27,11 +31,11 @@ export default function LoginScreen() {
     <Form<LoginForm> onSubmit={onSubmit}>
       <ScrollView
         renderBottom={() => (
-          <Box padding={1}>
+          <Box paddingX={1} paddingBottom={2}>
             <SubmitButton>Login</SubmitButton>
           </Box>
         )}>
-        <Box padding={1} paddingBottom={8}>
+        <Box padding={1} paddingBottom={2}>
           <TextInput
             label="Email"
             name="email"

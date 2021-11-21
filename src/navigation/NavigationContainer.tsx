@@ -5,6 +5,7 @@ import { ActivityIndicator, useTheme } from 'react-native-paper'
 import { useAuth } from '../utils/contexts/Auth'
 import AppStack from './AppStack'
 import AuthStack from './AuthStack'
+import VerificationStack from './VerificationStack'
 
 export default function NavigationContainer() {
   const { user, ready } = useAuth()
@@ -17,7 +18,15 @@ export default function NavigationContainer() {
   return (
     // @ts-ignore
     <ReactNavigationContainer theme={theme}>
-      {user ? <AppStack /> : <AuthStack />}
+      {user ? (
+        !user.emailVerified ? (
+          <VerificationStack />
+        ) : (
+          <AppStack />
+        )
+      ) : (
+        <AuthStack />
+      )}
     </ReactNavigationContainer>
   )
 }

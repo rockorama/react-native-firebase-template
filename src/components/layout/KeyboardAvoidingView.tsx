@@ -4,18 +4,21 @@ import {
   StyleSheet,
   KeyboardAvoidingView as RNKeyboardAvoidingView,
   KeyboardAvoidingViewProps,
+  Platform,
 } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 type Props = KeyboardAvoidingViewProps
 
 export default function KeyboardAvoidingView(props: Props) {
   const headerHeight = useHeaderHeight()
+  const { bottom } = useSafeAreaInsets()
 
   return (
     <RNKeyboardAvoidingView
-      behavior="padding"
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       style={styles.flex1}
-      keyboardVerticalOffset={headerHeight}
+      keyboardVerticalOffset={headerHeight - bottom}
       {...props}
     />
   )

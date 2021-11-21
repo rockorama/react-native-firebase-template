@@ -31,14 +31,22 @@ export async function sendVerificationLink() {
   await sendEmailVerification(getAuthenticatedUser())
 }
 
-export async function signUp(name: string, email: string, password: string) {
-  const { user } = await createUserWithEmailAndPassword(auth, email, password)
-  await updateProfile(user, { displayName: name })
+export async function signUp(payload: {
+  name: string
+  email: string
+  password: string
+}) {
+  const { user } = await createUserWithEmailAndPassword(
+    auth,
+    payload.email,
+    payload.password,
+  )
+  await updateProfile(user, { displayName: payload.name })
   await sendEmailVerification(user)
 }
 
-export function login(email: string, password: string) {
-  return signInWithEmailAndPassword(auth, email, password)
+export function login(payload: { email: string; password: string }) {
+  return signInWithEmailAndPassword(auth, payload.email, payload.password)
 }
 
 export function reAuthenticate(password: string) {

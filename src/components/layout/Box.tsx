@@ -33,13 +33,16 @@ type Props = ViewProps & {
   justify?: string
 }
 
+function getFirstValidNumber(values: (number | undefined)[]) {
+  return values.find((v) => v !== undefined) || 0
+}
+
 export default function Box(props: Props) {
   const theme = useTheme()
   const safeAreaInsets = useSafeAreaInsets()
   const computedProps = useMemo(() => {
     const {
       flex1,
-      padding,
       center,
       row,
       safeArea,
@@ -61,10 +64,6 @@ export default function Box(props: Props) {
     } = props
     const containerStyles: StyleProp[] = []
 
-    if (padding) {
-      containerStyles.push({ padding: padding * theme.spacing })
-    }
-
     if (center) {
       containerStyles.push(styles.center)
     }
@@ -75,37 +74,39 @@ export default function Box(props: Props) {
       containerStyles.push({ justifyContent: justify })
     }
 
-    const paddingTop =
-      (props.paddingTop || props.paddingY || props.padding || 0) * theme.spacing
-
-    const paddingBottom =
-      (props.paddingBottom || props.paddingY || props.padding || 0) *
-      theme.spacing
-
-    const paddingLeft =
-      (props.paddingLeft || props.paddingX || props.padding || 0) *
-      theme.spacing
-
-    const paddingRight =
-      (props.paddingRight || props.paddingX || props.padding || 0) *
-      theme.spacing
-
-    containerStyles.push({
-      paddingTop,
-      paddingRight,
-      paddingBottom,
-      paddingLeft,
-    })
+    const padding = {
+      paddingTop:
+        getFirstValidNumber([props.paddingTop, props.paddingY, props.padding]) *
+        theme.spacing,
+      paddingBottom:
+        getFirstValidNumber([
+          props.paddingBottom,
+          props.paddingY,
+          props.padding,
+        ]) * theme.spacing,
+      paddingLeft:
+        getFirstValidNumber([
+          props.paddingLeft,
+          props.paddingX,
+          props.padding,
+        ]) * theme.spacing,
+      paddingRight:
+        getFirstValidNumber([
+          props.paddingRight,
+          props.paddingX,
+          props.padding,
+        ]) * theme.spacing,
+    }
+    containerStyles.push(padding)
 
     if (safeArea === 'all' || safeArea === 'bottom') {
       containerStyles.push({
-        paddingBottom: safeAreaInsets.bottom + paddingBottom,
+        paddingBottom: safeAreaInsets.bottom + padding.paddingBottom,
       })
     }
-
     if (safeArea === 'all' || safeArea === 'top') {
       containerStyles.push({
-        paddingTop: safeAreaInsets.top + paddingTop,
+        paddingTop: safeAreaInsets.top + padding.paddingTop,
       })
     }
 
