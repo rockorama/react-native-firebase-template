@@ -40,7 +40,7 @@ export default function EmailVerificationScreen() {
         <SubmitButton mode="contained" i18nKey="emailVerificationSubmit" />
       </Form>
       <Spacer v={1} />
-      <Button onPress={signOut}>Sign out</Button>
+      <Button onPress={signOut} i18nKey="buttonSignOut" />
     </Box>
   )
 

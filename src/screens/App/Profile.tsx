@@ -8,6 +8,7 @@ import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import { updateAvatar, updateName } from '../../firebase/authentication'
 import { uploadUserFile } from '../../firebase/storage'
+import localize from '../../localization/localize'
 import { AppScreenProps } from '../../navigation/stacks/App/types'
 import { useAuth } from '../../utils/contexts/Auth'
 import { useFeedback } from '../../utils/contexts/Feedback'
@@ -30,7 +31,7 @@ export default function ProfileScreen(props: Props) {
       try {
         let photo = payload.values.avatar || ''
 
-        if (photo !== user?.photoURL) {
+        if (photo && photo !== user?.photoURL) {
           const file = await readFile(photo, 'avatar.jpg', 'image/jpg')
           photo = await uploadUserFile(file, 'profile')
           await updateAvatar(photo)
@@ -59,15 +60,19 @@ export default function ProfileScreen(props: Props) {
       <ScrollView
         renderBottom={() => (
           <Box paddingX={1} paddingBottom={2}>
-            <SubmitButton>Submit</SubmitButton>
+            <SubmitButton i18nKey="buttonSubmit" />
           </Box>
         )}>
         <Box padding={1} paddingBottom={2}>
           <PhotoField name="avatar" />
-          <TextInput required name="email" disabled label="Email" />
-          <TextInput required name="name" label="Name" />
+          <TextInput required name="email" disabled i18nKey="fieldEmail" />
+          <TextInput required name="name" i18nKey="fieldName" />
         </Box>
       </ScrollView>
     </Form>
   )
+}
+
+export const ScreenOptions = {
+  headerTitle: localize('profileHeader'),
 }

@@ -4,8 +4,12 @@ import ChangePasswordScreen, {
 import HomeScreen, {
   ScreenOptions as HomeOptions,
 } from '../../../screens/App/Home'
-import ProfileScreen from '../../../screens/App/Profile'
-import SettingsScreen from '../../../screens/App/Settings'
+import ProfileScreen, {
+  ScreenOptions as ProfileOptions,
+} from '../../../screens/App/Profile'
+import SettingsScreen, {
+  ScreenOptions as SettingsOptions,
+} from '../../../screens/App/Settings'
 export default [
   {
     name: 'ChangePassword' as 'ChangePassword',
@@ -20,9 +24,11 @@ export default [
   {
     name: 'Profile' as 'Profile',
     component: ProfileScreen,
+    options: ProfileOptions,
   },
   {
     name: 'Settings' as 'Settings',
     component: SettingsScreen,
+    options: SettingsOptions,
   },
 ]

@@ -1,9 +1,12 @@
 export default {
+  // Buttons General
+  buttonSignOut: 'Sign Out',
+  buttonSubmit: 'Submit',
+
   // EmailVerification a Screen
   emailVerificationDescription:
     "We've sent an email to '{{email}}' with a link to verify your email",
   emailVerificationHeader: 'Verify your email',
-  emailVerificationSignout: 'Sign out',
   emailVerificationSubmit: 'Send new email',
   emailVerificationTitle: 'Almost there!',
   // Fields
@@ -15,6 +18,8 @@ export default {
   fieldValidationEmail: 'Invald email',
   fieldValidationPassword: 'Passwords must match',
   fieldValidationRequired: 'Required field',
+  fieldPhotoFromLibrary: 'From media library',
+  fieldPhotoFromCamera: 'From camera',
   // Forgot Password Screen
   forgotPasswordDescription:
     'We will send you an email with a link to reset your password',
@@ -35,4 +40,14 @@ export default {
   welcomeLogin: 'Login',
   welcomeSignUp: 'Sign up',
   welcomeTitle: 'Welcome',
+  // Settings Screen
+  settingsHeader: 'Settings',
+  settingsOptionsProfileTitle: 'Profile',
+  settingsOptionsProfileDescription: 'Update your name and profile picture',
+  settingsOptionsChangePasswordTitle: 'Change Password',
+  settingsOptionsChangePasswordDescription: 'Update your password',
+  // ChangePassword Screen
+  changePasswordHeader: 'Change Password',
+  // Profile Screen
+  profileHeader: 'Profile',
 }

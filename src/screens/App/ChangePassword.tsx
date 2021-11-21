@@ -6,6 +6,7 @@ import TextInput from '../../components/form/TextInput'
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import { changePassword } from '../../firebase/authentication'
+import localize from '../../localization/localize'
 import { AppScreenProps } from '../../navigation/stacks/App/types'
 import { useFeedback } from '../../utils/contexts/Feedback'
 
@@ -22,7 +23,7 @@ const PASSWORD_VALIDATION = (value: string, values: ChangePasswordForm) => {
     return
   }
 
-  return 'Passwords must match'
+  return localize('fieldValidationPassword')
 }
 
 export default function ChangePasswordScreen(props: Props) {
@@ -50,14 +51,14 @@ export default function ChangePasswordScreen(props: Props) {
       <ScrollView
         renderBottom={() => (
           <Box paddingX={1} paddingBottom={2}>
-            <SubmitButton>Submit</SubmitButton>
+            <SubmitButton i18nKey="buttonSubmit" />
           </Box>
         )}>
         <Box padding={1} paddingBottom={2}>
           <TextInput
             required
             name="password"
-            label="Password"
+            i18nKey="fieldPassword"
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
@@ -65,7 +66,7 @@ export default function ChangePasswordScreen(props: Props) {
           <TextInput
             required
             name="newPassword"
-            label="New password"
+            i18nKey="fieldNewPassword"
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
@@ -73,7 +74,7 @@ export default function ChangePasswordScreen(props: Props) {
           <TextInput
             required
             name="repeatPassword"
-            label="Repeat new password"
+            i18nKey="fieldRepeatPassword"
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
@@ -85,4 +86,4 @@ export default function ChangePasswordScreen(props: Props) {
   )
 }
 
-export const ScreenOptions = { headerTitle: 'Change Password' }
+export const ScreenOptions = { headerTitle: localize('changePasswordHeader') }

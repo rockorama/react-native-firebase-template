@@ -4,6 +4,7 @@ import React from 'react'
 import { Platform, TouchableOpacity } from 'react-native'
 import { Avatar, Dialog, Divider, List, Portal } from 'react-native-paper'
 
+import localize from '../../localization/localize'
 import Box from '../layout/Box'
 
 function PickerDialog(props: {
@@ -17,13 +18,13 @@ function PickerDialog(props: {
         <Dialog.Content>
           <List.Item
             onPress={() => props.onSelect('library')}
-            title="From media library"
+            title={localize('fieldPhotoFromLibrary')}
             left={(props) => <List.Icon icon="image" {...props} />}
           />
           <Divider />
           <List.Item
             onPress={() => props.onSelect('camera')}
-            title="From camera"
+            title={localize('fieldPhotoFromCamera')}
             left={(props) => <List.Icon icon="camera" {...props} />}
           />
         </Dialog.Content>
