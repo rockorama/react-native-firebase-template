@@ -15,6 +15,7 @@ export type AuthStackParamList = {
   Welcome: undefined
   SignUp: undefined
   Login: undefined
+  ForgotPassword: undefined
 }
 
 export type AppRoute = keyof AppStackParamList
