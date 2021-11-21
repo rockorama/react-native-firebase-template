@@ -1,7 +1,9 @@
 import ForgotPasswordScreen, {
   ScreenOptions as ForgotPasswordOptions,
 } from '../../../screens/Auth/ForgotPassword'
-import LoginScreen from '../../../screens/Auth/Login'
+import LoginScreen, {
+  ScreenOptions as LoginOptions,
+} from '../../../screens/Auth/Login'
 import SignUpScreen, {
   ScreenOptions as SignUpOptions,
 } from '../../../screens/Auth/SignUp'
@@ -17,6 +19,7 @@ export default [
   {
     name: 'Login' as 'Login',
     component: LoginScreen,
+    options: LoginOptions,
   },
   {
     name: 'SignUp' as 'SignUp',

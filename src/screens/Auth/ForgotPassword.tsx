@@ -1,13 +1,14 @@
 import Form, { FormSubmitPayload } from 'formact'
 import React from 'react'
-import { Paragraph } from 'react-native-paper'
 
 import SubmitButton from '../../components/form/SubmitButton'
 import TextInput from '../../components/form/TextInput'
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import Spacer from '../../components/layout/Spacer'
+import Paragraph from '../../components/typography/Paragraph'
 import { sendResetPasswordLink } from '../../firebase/authentication'
+import localize from '../../localization/localize'
 import { useFeedback } from '../../utils/contexts/Feedback'
 
 type ForgotPasswordForm = {
@@ -34,16 +35,14 @@ export default function ForgotPasswordScreen() {
       <ScrollView
         renderBottom={() => (
           <Box paddingX={1} paddingBottom={2}>
-            <SubmitButton>Send Link</SubmitButton>
+            <SubmitButton i18nKey="forgotPasswordSubmit" />
           </Box>
         )}>
         <Box padding={1} paddingBottom={2}>
-          <Paragraph>
-            We will send you an email with a link to reset your password
-          </Paragraph>
+          <Paragraph i18nKey="forgotPasswordDescription" />
           <Spacer v={1} />
           <TextInput
-            label="Email"
+            i18nKey="fieldEmail"
             name="email"
             required
             keyboardType="email-address"
@@ -57,4 +56,4 @@ export default function ForgotPasswordScreen() {
   )
 }
 
-export const ScreenOptions = { headerTitle: 'Forgot Password' }
+export const ScreenOptions = { headerTitle: localize('forgotPasswordHeader') }

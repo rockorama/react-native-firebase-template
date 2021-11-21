@@ -1,12 +1,15 @@
 import Form from 'formact'
 import React, { useEffect } from 'react'
-import { Button, Paragraph, Title } from 'react-native-paper'
 
+import Button from '../../components/core/Button'
 import SubmitButton from '../../components/form/SubmitButton'
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import Spacer from '../../components/layout/Spacer'
+import Paragraph from '../../components/typography/Paragraph'
+import Title from '../../components/typography/Title'
 import { sendVerificationLink, signOut } from '../../firebase/authentication'
+import localize from '../../localization/localize'
 import { useAuth } from '../../utils/contexts/Auth'
 import { useFeedback } from '../../utils/contexts/Feedback'
 
@@ -34,7 +37,7 @@ export default function EmailVerificationScreen() {
           }
           payload.onFinish()
         }}>
-        <SubmitButton mode="contained">Send new email</SubmitButton>
+        <SubmitButton mode="contained" i18nKey="emailVerificationSubmit" />
       </Form>
       <Spacer v={1} />
       <Button onPress={signOut}>Sign out</Button>
@@ -44,15 +47,19 @@ export default function EmailVerificationScreen() {
   return (
     <ScrollView flex1 renderBottom={renderBottom}>
       <Box flex1 center paddingX={2}>
-        <Title>Almost there!</Title>
+        <Title i18nKey="emailVerificationTitle" />
         <Spacer v={2} />
-        <Paragraph>
-          We've sent an email to '{user?.email}' with a link to verify your
-          email
-        </Paragraph>
+        <Paragraph
+          i18nKey={[
+            'emailVerificationDescription',
+            { email: user?.email || '' },
+          ]}
+        />
       </Box>
     </ScrollView>
   )
 }
 
-export const ScreenOptions = { headerTitle: 'Verify your email' }
+export const ScreenOptions = {
+  headerTitle: localize('emailVerificationHeader'),
+}

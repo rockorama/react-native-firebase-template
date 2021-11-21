@@ -6,6 +6,7 @@ import TextInput from '../../components/form/TextInput'
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import { signUp } from '../../firebase/authentication'
+import localize from '../../localization/localize'
 import { useFeedback } from '../../utils/contexts/Feedback'
 
 type SignUpForm = {
@@ -33,13 +34,13 @@ export default function SignUpScreen() {
       <ScrollView
         renderBottom={() => (
           <Box paddingX={1} paddingBottom={2}>
-            <SubmitButton>Sign Up</SubmitButton>
+            <SubmitButton i18nKey="signUpSubmit" />
           </Box>
         )}>
         <Box padding={1} paddingBottom={2}>
-          <TextInput label="Name" name="name" required />
+          <TextInput i18nKey="fieldName" name="name" required />
           <TextInput
-            label="Email"
+            i18nKey="fieldEmail"
             name="email"
             required
             keyboardType="email-address"
@@ -50,7 +51,7 @@ export default function SignUpScreen() {
           <TextInput
             required
             name="password"
-            label="Password"
+            i18nKey="fieldPassword"
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
@@ -61,4 +62,4 @@ export default function SignUpScreen() {
   )
 }
 
-export const ScreenOptions = { headerTitle: 'Sign Up' }
+export const ScreenOptions = { headerTitle: localize('signUpHeader') }

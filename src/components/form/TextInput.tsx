@@ -5,12 +5,17 @@ import {
   TextInput as PaperTextInput,
   useTheme,
 } from 'react-native-paper'
+import { getLocalizedChildren, I18nKey } from '../../localization/localize'
 
 import Box from '../layout/Box'
 
 type TextInputProps = React.ComponentProps<typeof PaperTextInput>
-type Props = Partial<TextInputProps> &
-  Omit<FieldProps, 'type'> & { autoComplete?: boolean }
+type Props = Omit<TextInputProps, 'label' | 'autoComplete'> &
+  Omit<FieldProps, 'type'> & {
+    i18nKey?: I18nKey
+    label?: string
+    autoComplete?: boolean
+  }
 
 export default function TextInput(props: Props) {
   const field = useField<string>({
@@ -20,9 +25,18 @@ export default function TextInput(props: Props) {
       props.textContentType === 'emailAddress'
         ? 'email'
         : 'text',
+    defaultErrorMessages: {
+      email: getLocalizedChildren({ i18nKey: 'fieldValidationEmail' }),
+      required: getLocalizedChildren({ i18nKey: 'fieldValidationRequired' }),
+    },
   })
 
   const theme = useTheme()
+
+  const label = getLocalizedChildren({
+    i18nKey: props.i18nKey,
+    children: props.label,
+  })
 
   return (
     <Box>
@@ -30,7 +44,7 @@ export default function TextInput(props: Props) {
         testID={props.name}
         mode="outlined"
         {...props}
-        label={props.required ? props.label + '*' : props.label}
+        label={props.required ? label + '*' : label}
         disabled={props.disabled || field.submitting}
         value={field.fieldValue || ''}
         onChangeText={field.update}
