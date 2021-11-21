@@ -4,20 +4,6 @@ export type AppStackParamList = {
   //   App Routes
   Home: undefined
 }
-
-export type VerificationStackParamList = {
-  //   Verification Routes
-  EmailVerification: undefined
-}
-
-export type AuthStackParamList = {
-  //   Auth Routes
-  Welcome: undefined
-  SignUp: undefined
-  Login: undefined
-  ForgotPassword: undefined
-}
-
 export type AppRoute = keyof AppStackParamList
 export type AppNavigationProp<T extends AppRoute> = NavigationProp<
   AppStackParamList,
@@ -29,6 +15,13 @@ export type AppScreenProps<T extends AppRoute> = {
   route: AppRouteProp<T>
 }
 
+export type AuthStackParamList = {
+  //   Auth Routes
+  Welcome: undefined
+  SignUp: undefined
+  Login: undefined
+  ForgotPassword: undefined
+}
 export type AuthRoute = keyof AuthStackParamList
 export type AuthNavigationProp<T extends AuthRoute> = NavigationProp<
   AuthStackParamList,
@@ -43,6 +36,10 @@ export type AuthScreenProps<T extends AuthRoute> = {
   route: AuthRouteProp<T>
 }
 
+export type VerificationStackParamList = {
+  //   Verification Routes
+  EmailVerification: undefined
+}
 export type VerificationRoute = keyof VerificationStackParamList
 export type VerificationNavigationProp<T extends VerificationRoute> =
   NavigationProp<VerificationStackParamList, T>

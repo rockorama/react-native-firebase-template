@@ -8,7 +8,7 @@ const Stack = createStackNavigator<AuthStackParamList>()
 
 export default function AuthStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Welcome">
       {routes.map((route) => (
         // @ts-ignore
         <Stack.Screen key={route.name} {...route} />

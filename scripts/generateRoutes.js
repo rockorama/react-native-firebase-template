@@ -71,8 +71,6 @@ function getTSXFiles(dir, folder) {
         fs.unlinkSync(routesFile)
       }
       fs.writeFileSync(routesFile, finalContent)
-
-      console.log(routesFileImports)
     }
   })
 }

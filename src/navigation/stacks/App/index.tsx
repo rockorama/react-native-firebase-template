@@ -8,7 +8,7 @@ const Stack = createStackNavigator<AppStackParamList>()
 
 export default function AppStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Home">
       {routes.map((route) => (
         // @ts-ignore
         <Stack.Screen key={route.name} {...route} />
