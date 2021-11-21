@@ -27,7 +27,7 @@ export default function SettingsScreen(props: Props) {
   return (
     <>
       <ScrollView flex1>
-        {OPTIONS.map((option, index) => (
+        {OPTIONS.map((option) => (
           <Fragment key={option.title}>
             <List.Item
               onPress={() => props.navigation.navigate(option.route)}
