@@ -3,7 +3,9 @@ import { NavigationProp, RouteProp } from '@react-navigation/core'
 import { RouteParams as HomeParams } from '../../../screens/App/Home'
 
 export type AppStackParamList = {
+  ChangePassword: undefined
   Home: HomeParams
+  Profile: undefined
   Settings: undefined
 }
 export type AppRoute = keyof AppStackParamList
