@@ -1,5 +1,5 @@
 import HomeScreen, {
-  StackOptions as HomeOptions,
+  ScreenOptions as HomeOptions,
 } from '../../../screens/App/Home'
 export default [
   {

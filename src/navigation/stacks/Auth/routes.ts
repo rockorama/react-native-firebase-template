@@ -1,12 +1,12 @@
 import ForgotPasswordScreen, {
-  StackOptions as ForgotPasswordOptions,
+  ScreenOptions as ForgotPasswordOptions,
 } from '../../../screens/Auth/ForgotPassword'
 import LoginScreen from '../../../screens/Auth/Login'
 import SignUpScreen, {
-  StackOptions as SignUpOptions,
+  ScreenOptions as SignUpOptions,
 } from '../../../screens/Auth/SignUp'
 import WelcomeScreen, {
-  StackOptions as WelcomeOptions,
+  ScreenOptions as WelcomeOptions,
 } from '../../../screens/Auth/Welcome'
 export default [
   {

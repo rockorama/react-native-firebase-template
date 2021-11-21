@@ -57,4 +57,4 @@ export default function ForgotPasswordScreen() {
   )
 }
 
-export const StackOptions = { headerTitle: 'Forgot Password' }
+export const ScreenOptions = { headerTitle: 'Forgot Password' }

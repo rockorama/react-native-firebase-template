@@ -37,7 +37,7 @@ function getTSXFiles(dir, folder) {
       const content = fs.readFileSync(fullPath).toString()
       const route = {
         name: file.replace('.tsx', ''),
-        options: content.indexOf('export const StackOptions') >= 0,
+        options: content.indexOf('export const ScreenOptions') >= 0,
       }
 
       routes.push(route)
@@ -49,7 +49,7 @@ function getTSXFiles(dir, folder) {
       const routesFileImports = routes
         .map((r) => {
           return `import ${r.name}Screen${
-            r.options ? `, { StackOptions as ${r.name}Options }` : ''
+            r.options ? `, { ScreenOptions as ${r.name}Options }` : ''
           } from '${dir.replace(screensPath, '../../../screens')}/${r.name}'`
         })
         .join('\n')

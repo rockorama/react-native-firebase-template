@@ -11,4 +11,4 @@ export default function HomeScreen() {
   )
 }
 
-export const StackOptions = {}
+export const ScreenOptions = {}

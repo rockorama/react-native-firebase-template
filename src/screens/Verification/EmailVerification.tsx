@@ -55,4 +55,4 @@ export default function EmailVerificationScreen() {
   )
 }
 
-export const StackOptions = { headerTitle: 'Verify your email' }
+export const ScreenOptions = { headerTitle: 'Verify your email' }

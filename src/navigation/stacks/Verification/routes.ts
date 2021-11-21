@@ -1,5 +1,5 @@
 import EmailVerificationScreen, {
-  StackOptions as EmailVerificationOptions,
+  ScreenOptions as EmailVerificationOptions,
 } from '../../../screens/Verification/EmailVerification'
 export default [
   {

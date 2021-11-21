@@ -39,4 +39,4 @@ export default function WelcomeScreen(props: Props) {
   )
 }
 
-export const StackOptions = { header: () => null }
+export const ScreenOptions = { header: () => null }

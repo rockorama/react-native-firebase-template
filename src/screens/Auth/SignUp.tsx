@@ -61,4 +61,4 @@ export default function SignUpScreen() {
   )
 }
 
-export const StackOptions = { headerTitle: 'Sign Up' }
+export const ScreenOptions = { headerTitle: 'Sign Up' }
