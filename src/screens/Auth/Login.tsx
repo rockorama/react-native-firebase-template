@@ -8,7 +8,7 @@ import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import Spacer from '../../components/layout/Spacer'
 import { login } from '../../firebase/authentication'
-import { AuthScreenProps } from '../../navigation/navigationTypes'
+import { AuthScreenProps } from '../../navigation/stacks/Auth/types'
 import { useFeedback } from '../../utils/contexts/Feedback'
 
 type LoginForm = {

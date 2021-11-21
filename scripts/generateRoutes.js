@@ -1,5 +1,47 @@
 console.log('Generating routes')
 
+const TYPES_TEMPLATE = `
+import { NavigationProp, RouteProp } from '@react-navigation/core'
+
+<<IMPORTS>>
+
+export type <<STACK>>StackParamList = {
+  <<ROUTES>>
+}
+export type <<STACK>>Route = keyof <<STACK>>StackParamList
+export type <<STACK>>NavigationProp<T extends <<STACK>>Route> = NavigationProp<
+  <<STACK>>StackParamList,
+  T
+>
+export type <<STACK>>RouteProp<T extends <<STACK>>Route> = RouteProp<<<STACK>>StackParamList, T>
+export type <<STACK>>ScreenProps<T extends <<STACK>>Route> = {
+  navigation: <<STACK>>NavigationProp<T>
+  route: <<STACK>>RouteProp<T>
+}
+
+`
+
+const INDEX_TEMPLATE = `
+import { createStackNavigator } from '@react-navigation/stack'
+import React from 'react'
+
+import routes from './routes'
+import { <<STACK>>StackParamList } from './types'
+
+const Stack = createStackNavigator<<<STACK>>StackParamList>()
+
+export default function <<STACK>>Stack() {
+  return (
+    <Stack.Navigator <<INITIAL>>>
+      {routes.map((route) => (
+        <Stack.Screen key={route.name} {...route} />
+      ))}
+    </Stack.Navigator>
+  )
+}
+
+`
+
 //requiring path and fs modules
 const fs = require('fs')
 const path = require('path')
@@ -23,6 +65,13 @@ function checkDir(dir) {
   })
 }
 
+function writeFile(name, content) {
+  if (fs.existsSync(name)) {
+    fs.unlinkSync(name)
+  }
+  fs.writeFileSync(name, content)
+}
+
 function getTSXFiles(dir, folder) {
   const files = fs.readdirSync(dir)
 
@@ -38,6 +87,8 @@ function getTSXFiles(dir, folder) {
       const route = {
         name: file.replace('.tsx', ''),
         options: content.indexOf('export const ScreenOptions') >= 0,
+        params: content.indexOf('export type RouteParams') >= 0,
+        isInitial: content.indexOf('export const isInitialRoute = true') >= 0,
       }
 
       routes.push(route)
@@ -46,6 +97,7 @@ function getTSXFiles(dir, folder) {
       const stackFolder = path.join(routesPath, folder)
       checkDir(stackFolder)
 
+      // GENERATE routes.ts FILE
       const routesFileImports = routes
         .map((r) => {
           return `import ${r.name}Screen${
@@ -58,7 +110,7 @@ function getTSXFiles(dir, folder) {
         export default [${routes
           .map((r) => {
             return `{
-              name: '${r.name}',
+              name: '${r.name}' as '${r.name}',
               component: ${r.name}Screen,
               ${r.options ? `options: ${r.name}Options` : ''}
             },`
@@ -67,10 +119,49 @@ function getTSXFiles(dir, folder) {
 
       const routesFile = path.join(stackFolder, 'routes.ts')
 
-      if (fs.existsSync(routesFile)) {
-        fs.unlinkSync(routesFile)
-      }
-      fs.writeFileSync(routesFile, finalContent)
+      writeFile(routesFile, finalContent)
+
+      // GENERATE types.ts FILE
+      const typesImports = routes
+        .filter((r) => r.params)
+        .map((r) => {
+          return `import { RouteParams as ${r.name}Params } from '${dir.replace(
+            screensPath,
+            '../../../screens',
+          )}/${r.name}'
+          `
+        })
+        .join('\n')
+
+      const typesFile = path.join(stackFolder, 'types.ts')
+
+      const typesContent = TYPES_TEMPLATE.split('<<STACK>>')
+        .join(folder)
+        .split('<<IMPORTS>>')
+        .join(typesImports)
+        .split('<<ROUTES>>')
+        .join(
+          routes
+            .map(
+              (r) => `${r.name}: ${r.params ? `${r.name}Params` : 'undefined'}`,
+            )
+            .join('\n'),
+        )
+
+      writeFile(typesFile, typesContent)
+
+      const indexFile = path.join(stackFolder, 'index.tsx')
+
+      const initialRoute = routes.find((r) => r.isInitial)
+
+      const indexContent = INDEX_TEMPLATE.split('<<STACK>>')
+        .join(folder)
+        .replace(
+          '<<INITIAL>>',
+          initialRoute ? `initialRouteName="${initialRoute.name}"` : '',
+        )
+
+      writeFile(indexFile, indexContent)
     }
   })
 }

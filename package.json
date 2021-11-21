@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "format": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
-    "routes": "node ./scripts/generateRoutes.js && eslint --ext .ts ./src/navigation/stacks --fix",
+    "routes": "node ./scripts/generateRoutes.js && eslint --ext .ts,.tsx ./src/navigation/stacks --fix",
     "eject": "expo eject"
   },
   "eslintConfig": {

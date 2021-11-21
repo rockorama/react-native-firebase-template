@@ -10,21 +10,21 @@ import WelcomeScreen, {
 } from '../../../screens/Auth/Welcome'
 export default [
   {
-    name: 'ForgotPassword',
+    name: 'ForgotPassword' as 'ForgotPassword',
     component: ForgotPasswordScreen,
     options: ForgotPasswordOptions,
   },
   {
-    name: 'Login',
+    name: 'Login' as 'Login',
     component: LoginScreen,
   },
   {
-    name: 'SignUp',
+    name: 'SignUp' as 'SignUp',
     component: SignUpScreen,
     options: SignUpOptions,
   },
   {
-    name: 'Welcome',
+    name: 'Welcome' as 'Welcome',
     component: WelcomeScreen,
     options: WelcomeOptions,
   },

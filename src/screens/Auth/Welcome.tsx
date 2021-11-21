@@ -3,7 +3,7 @@ import { Button, Title } from 'react-native-paper'
 
 import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
-import { AuthScreenProps } from '../../navigation/navigationTypes'
+import { AuthScreenProps } from '../../navigation/stacks/Auth/types'
 
 type Props = AuthScreenProps<'Welcome'>
 
@@ -40,3 +40,5 @@ export default function WelcomeScreen(props: Props) {
 }
 
 export const ScreenOptions = { header: () => null }
+
+export const isInitialRoute = true

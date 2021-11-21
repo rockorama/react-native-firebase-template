@@ -3,7 +3,7 @@ import EmailVerificationScreen, {
 } from '../../../screens/Verification/EmailVerification'
 export default [
   {
-    name: 'EmailVerification',
+    name: 'EmailVerification' as 'EmailVerification',
     component: EmailVerificationScreen,
     options: EmailVerificationOptions,
   },
