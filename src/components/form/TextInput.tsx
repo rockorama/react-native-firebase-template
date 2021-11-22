@@ -5,8 +5,8 @@ import {
   TextInput as PaperTextInput,
   useTheme,
 } from 'react-native-paper'
-import { getLocalizedChildren, I18nKey } from '../../localization/localize'
 
+import { getLocalizedChildren, I18nKey } from '../../localization/localize'
 import Box from '../layout/Box'
 
 type TextInputProps = React.ComponentProps<typeof PaperTextInput>
