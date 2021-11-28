@@ -1,0 +1,49 @@
+diff --git a/node_modules/@firebase/auth/dist/auth-public.d.ts b/node_modules/@firebase/auth/dist/auth-public.d.ts
+index a00a354..9a78187 100644
+--- a/node_modules/@firebase/auth/dist/auth-public.d.ts
++++ b/node_modules/@firebase/auth/dist/auth-public.d.ts
+@@ -1210,7 +1210,7 @@ export declare function getAdditionalUserInfo(userCredential: UserCredential): A
+  *
+  * @public
+  */
+-export declare function getAuth(app?: FirebaseApp): Auth;
++export declare function getAuth(app?: FirebaseApp, persistence?: any): Auth;
+ 
+ /**
+  * Returns a JSON Web Token (JWT) used to identify the user to a Firebase service.
+diff --git a/node_modules/@firebase/auth/dist/rn/index.js b/node_modules/@firebase/auth/dist/rn/index.js
+index bfd836b..9681edc 100644
+--- a/node_modules/@firebase/auth/dist/rn/index.js
++++ b/node_modules/@firebase/auth/dist/rn/index.js
+@@ -2,7 +2,6 @@
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+-var reactNative = require('react-native');
+ var app = require('@firebase/app');
+ var phone = require('./phone-4c7624c1.js');
+ var tslib = require('tslib');
+@@ -124,15 +123,14 @@ function getReactNativePersistence(storage) {
+  *
+  * @public
+  */
+-var reactNativeLocalPersistence = getReactNativePersistence(reactNative.AsyncStorage);
+-function getAuth(app$1) {
++function getAuth(app$1, persistence) {
+     if (app$1 === void 0) { app$1 = app.getApp(); }
+     var provider = app._getProvider(app$1, 'auth');
+     if (provider.isInitialized()) {
+         return provider.getImmediate();
+     }
+     return phone.initializeAuth(app$1, {
+-        persistence: reactNativeLocalPersistence
++        persistence: getReactNativePersistence(persistence)
+     });
+ }
+ phone.registerAuth("ReactNative" /* REACT_NATIVE */);
+@@ -204,5 +202,4 @@ exports.verifyBeforeUpdateEmail = phone.verifyBeforeUpdateEmail;
+ exports.verifyPasswordResetCode = phone.verifyPasswordResetCode;
+ exports.getAuth = getAuth;
+ exports.getReactNativePersistence = getReactNativePersistence;
+-exports.reactNativeLocalPersistence = reactNativeLocalPersistence;
+ //# sourceMappingURL=index.js.map

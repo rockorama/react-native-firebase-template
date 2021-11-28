@@ -12,11 +12,12 @@ import {
   updateProfile,
   User,
 } from '@firebase/auth'
+import AsyncStorageLib from '@react-native-async-storage/async-storage'
 import { ValidationFunction } from 'formact'
 
 import { app } from './client'
 
-export const auth = getAuth(app)
+export const auth = getAuth(app, AsyncStorageLib)
 
 export type UserType = User
 
