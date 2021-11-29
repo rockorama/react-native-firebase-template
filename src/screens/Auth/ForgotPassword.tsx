@@ -9,7 +9,7 @@ import Spacer from '../../components/layout/Spacer'
 import Paragraph from '../../components/typography/Paragraph'
 import { sendResetPasswordLink } from '../../firebase/authentication'
 import localize from '../../localization/localize'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useFeedback } from '../../contexts/Feedback'
 
 type ForgotPasswordForm = {
   email: string

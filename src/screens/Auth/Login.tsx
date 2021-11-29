@@ -10,7 +10,7 @@ import Spacer from '../../components/layout/Spacer'
 import { login } from '../../firebase/authentication'
 import localize from '../../localization/localize'
 import { AuthScreenProps } from '../../navigation/stacks/Auth/types'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useFeedback } from '../../contexts/Feedback'
 
 type LoginForm = {
   email: string

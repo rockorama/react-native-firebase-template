@@ -2,7 +2,7 @@ import { NavigationContainer as ReactNavigationContainer } from '@react-navigati
 import React from 'react'
 import { ActivityIndicator, useTheme } from 'react-native-paper'
 
-import { useAuth } from '../utils/contexts/Auth'
+import { useAuth } from '../contexts/Auth'
 import AppStack from './stacks/App'
 import AuthStack from './stacks/Auth'
 import VerificationStack from './stacks/Verification'

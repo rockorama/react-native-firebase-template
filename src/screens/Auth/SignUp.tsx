@@ -7,7 +7,7 @@ import Box from '../../components/layout/Box'
 import ScrollView from '../../components/layout/ScrollView'
 import { signUp } from '../../firebase/authentication'
 import localize from '../../localization/localize'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useFeedback } from '../../contexts/Feedback'
 
 type SignUpForm = {
   name: string

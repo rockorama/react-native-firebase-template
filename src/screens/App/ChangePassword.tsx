@@ -8,7 +8,7 @@ import ScrollView from '../../components/layout/ScrollView'
 import { changePassword } from '../../firebase/authentication'
 import localize from '../../localization/localize'
 import { AppScreenProps } from '../../navigation/stacks/App/types'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useFeedback } from '../../contexts/Feedback'
 
 type Props = AppScreenProps<'ChangePassword'>
 

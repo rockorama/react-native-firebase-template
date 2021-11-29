@@ -10,8 +10,8 @@ import { updateAvatar, updateName } from '../../firebase/authentication'
 import { uploadUserFile } from '../../firebase/storage'
 import localize from '../../localization/localize'
 import { AppScreenProps } from '../../navigation/stacks/App/types'
-import { useAuth } from '../../utils/contexts/Auth'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useAuth } from '../../contexts/Auth'
+import { useFeedback } from '../../contexts/Feedback'
 import readFile from '../../utils/readFile'
 
 type Props = AppScreenProps<'Profile'>

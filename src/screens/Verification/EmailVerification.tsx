@@ -10,8 +10,8 @@ import Paragraph from '../../components/typography/Paragraph'
 import Title from '../../components/typography/Title'
 import { sendVerificationLink, signOut } from '../../firebase/authentication'
 import localize from '../../localization/localize'
-import { useAuth } from '../../utils/contexts/Auth'
-import { useFeedback } from '../../utils/contexts/Feedback'
+import { useAuth } from '../../contexts/Auth'
+import { useFeedback } from '../../contexts/Feedback'
 
 export default function EmailVerificationScreen() {
   const giveFeedback = useFeedback()

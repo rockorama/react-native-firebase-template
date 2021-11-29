@@ -10,7 +10,7 @@ import {
   auth,
   getAuthenticatedUser,
   UserType,
-} from '../../firebase/authentication'
+} from '../firebase/authentication'
 
 export type AuthContextType = {
   ready?: boolean

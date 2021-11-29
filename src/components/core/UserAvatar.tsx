@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar } from 'react-native-paper'
 
-import { useAuth } from '../../utils/contexts/Auth'
+import { useAuth } from '../../contexts/Auth'
 
 type Props = { size?: number }
 

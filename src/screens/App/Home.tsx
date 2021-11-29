@@ -13,7 +13,7 @@ import {
   AppNavigationProp,
   AppScreenProps,
 } from '../../navigation/stacks/App/types'
-import { useAuth } from '../../utils/contexts/Auth'
+import { useAuth } from '../../contexts/Auth'
 
 type Props = AppScreenProps<'Home'>
 

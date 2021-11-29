@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 
-import FeedbackSnackbar from '../../components/layout/FeedbackSnackbar'
+import FeedbackSnackbar from '../components/layout/FeedbackSnackbar'
 
 const FeedbackContext = createContext<{
   giveFeedback: (message: string, error?: boolean) => any
