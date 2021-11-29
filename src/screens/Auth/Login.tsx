@@ -1,7 +1,7 @@
 import Form, { FormSubmitPayload } from 'formact'
 import React from 'react'
-import Button from '../../components/core/Button'
 
+import Button from '../../components/core/Button'
 import SubmitButton from '../../components/form/SubmitButton'
 import TextInput from '../../components/form/TextInput'
 import Box from '../../components/layout/Box'
@@ -28,8 +28,8 @@ export default function LoginScreen(props: AuthScreenProps<'Login'>) {
       } catch (e: any) {
         giveFeedback(e.message.replace('Firebase:', ''), true)
       }
-      payload.onFinish()
     }
+    payload.onFinish()
   }
 
   return (

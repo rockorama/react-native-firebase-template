@@ -42,11 +42,12 @@ export default function ProfileScreen(props: Props) {
         giveFeedback('Profile updated!')
         payload.onFinish()
         props.navigation.goBack()
+        return
       } catch (e: any) {
         giveFeedback(e.message.replace('Firebase:', ''), true)
-        payload.onFinish()
       }
     }
+    payload.onFinish()
   }
 
   return (

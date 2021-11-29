@@ -39,11 +39,12 @@ export default function ChangePasswordScreen(props: Props) {
         giveFeedback('Passoword changed!')
         payload.onFinish()
         props.navigation.goBack()
+        return
       } catch (e: any) {
         giveFeedback(e.message.replace('Firebase:', ''), true)
-        payload.onFinish()
       }
     }
+    payload.onFinish()
   }
 
   return (

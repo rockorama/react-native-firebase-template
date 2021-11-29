@@ -1,5 +1,5 @@
 import { FieldProps, useField } from 'formact'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Paragraph,
   TextInput as PaperTextInput,
@@ -30,7 +30,7 @@ export default function TextInput(props: Props) {
       required: getLocalizedChildren({ i18nKey: 'fieldValidationRequired' }),
     },
   })
-
+  const [showPassword, setShowPassword] = useState(false)
   const theme = useTheme()
 
   const label = getLocalizedChildren({
@@ -52,6 +52,15 @@ export default function TextInput(props: Props) {
         onBlur={() => field.onBlur()}
         error={field.showError}
         autoComplete={props.autoComplete}
+        secureTextEntry={props.secureTextEntry && !showPassword}
+        right={
+          props.secureTextEntry ? (
+            <PaperTextInput.Icon
+              onPress={() => setShowPassword(!showPassword)}
+              name={showPassword ? 'eye-off' : 'eye'}
+            />
+          ) : null
+        }
       />
       <Box minHeight={theme.spacing}>
         {field.showError ? (

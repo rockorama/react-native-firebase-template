@@ -26,8 +26,8 @@ export default function ForgotPasswordScreen() {
       } catch (e: any) {
         giveFeedback(e.message.replace('Firebase:', ''), true)
       }
-      payload.onFinish()
     }
+    payload.onFinish()
   }
 
   return (

@@ -22,11 +22,12 @@ export default function SignUpScreen() {
     if (payload.valid) {
       try {
         await signUp(payload.values)
+        return
       } catch (e: any) {
         giveFeedback(e.message.replace('Firebase:', ''), true)
-        payload.onFinish()
       }
     }
+    payload.onFinish()
   }
 
   return (
